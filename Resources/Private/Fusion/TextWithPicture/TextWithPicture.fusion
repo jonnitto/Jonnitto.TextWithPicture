@@ -1,0 +1,64 @@
+prototype(Jonnitto.TextWithPicture:TextWithPicture) < prototype(Fusion:Tag) {
+	config = ${Configuration.setting('Jonnitto.TextWithPicture')}
+	alignment = ${q(node).property('alignment') ? q(node).property('alignment') : this.config.defaultAlignment}
+
+	@context {
+		config = ${this.config}
+		alignment = ${this.alignment}
+		hasRow = ${this.alignment == 'left' || this.alignment == 'right' ? true : false}
+	}
+
+	attributes {
+		class = Fusion:RawArray {
+			@process.nodeType >
+			nodeType = 'jonnitto-textwithpicture'
+			container = ${config.container}
+			alignment = ${'-' + String.toLowerCase(alignment)}
+			container = ${hasRow ? config.class.hasRow : config.class.hasFloat}
+		}
+	}
+
+	content = Fusion:Template {
+		templatePath = 'resource://Jonnitto.TextWithPicture/Private/Fusion/TextWithPicture/TextWithPicture.html'
+		@process.wrapWithRow = Fusion:Tag {
+			@if.isLeftOrRight = ${hasRow}
+			attributes.class = Fusion:RawArray {
+				row = ${config.class.row}
+				alignment = ${config.class.alignment[alignment]}
+			}
+			content = ${value}
+		}
+
+		hasRow = ${hasRow}
+
+		text = Jonnitto.Text:Editable {
+			attributes = Fusion:Attributes {
+				class = ${hasRow ? config.class.colText : false}
+			}
+		}
+		image = Jonnitto.Picture:Picture {
+			breakpoints = ${Configuration.setting('Jonnitto.TextWithPicture.breakpoints')}
+			maximumWidths = ${Configuration.setting('Jonnitto.TextWithPicture.maximumWidths')}
+			maximumHeights = ${Configuration.setting('Jonnitto.TextWithPicture.maximumHeights')}
+			widths = ${Configuration.setting('Jonnitto.TextWithPicture.widths')}
+			heights = ${Configuration.setting('Jonnitto.TextWithPicture.heights')}
+			allowCropping = ${Configuration.setting('Jonnitto.TextWithPicture.allowCropping')}
+			allowUpScaling = ${Configuration.setting('Jonnitto.TextWithPicture.allowUpScaling')}
+
+			attributes.class {
+				container = false
+				col = ${hasRow ? config.class.colPicutre : false}
+				float = ${hasRow ? false : config.class.alignment[alignment]}
+				floatPicture = ${hasRow ? false : config.class.floatPicture}
+			}
+			@process.contentElementWrapping >
+		}
+	}
+
+	@ignoreProperties = ${['config', 'alignment']}
+
+	@process.contentElementWrapping {
+		expression = ContentElementWrapping
+		@position = 'end 999999999'
+	}
+}

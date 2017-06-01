@@ -1,0 +1,39 @@
+{
+    "name": "jonnitto/textwithpicture",
+    "type": "neos-plugin",
+    "license": "MIT",
+    "description": "Text with responsive picture for Neos CMS",
+    "keywords": [
+        "flow",
+        "neos",
+        "picture",
+        "photo",
+        "image",
+        "text"
+    ],
+    "authors": [
+        {
+            "name": "Jon Uhlmann",
+            "email": "me@jonnitto.ch",
+            "homepage": "https://twitter.com/jonnitto",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "neos/neos": "~3.0 || dev-master",
+        "jonnitto/picutre": "~1.0",
+        "jonnitto/text": "~0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jonnitto\\TextWithPicture\\": "Classes"
+        }
+    },
+    "extra": {
+        "marketplace-account": "me@jonnitto.ch",
+        "installer-name": "Jonnitto.TextWithPicture",
+        "neos": {
+            "package-key": "Jonnitto.TextWithPicture"
+        }
+    }
+}

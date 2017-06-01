@@ -1,0 +1,65 @@
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
+
+$sizes: (
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%
+) !default;
+
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+	$min: map-get($breakpoints, $name);
+	@return if($min != 0, $min, null);
+}
+
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+	@return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+}
+
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+	$min: $name;
+
+	@if type-of($name) != 'number' {
+		$min: breakpoint-min($name, $breakpoints);
+	}
+
+	@if $min {
+		@media (min-width: $min) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+@mixin create-max-float-with($breakpoints: $grid-breakpoints, $sizes: $sizes) {
+	@each $breakpoint in map-keys($breakpoints) {
+		$infix: breakpoint-infix($breakpoint, $breakpoints);
+
+		@include media-breakpoint-up($breakpoint) {
+			@each $size, $width in $sizes {
+				.maxwith#{$infix}-#{$size} {
+					max-width: $width;
+				}
+			}
+		}
+	}
+}
+
+// Default set for .maxwith-sm-50
+@mixin create-max-float-with-single($breakpoint: sm, $size: 50, $breakpoints: $grid-breakpoints, $sizes: $sizes) {
+	$infix: breakpoint-infix($breakpoint, $breakpoints);
+	$width: map-get($sizes, $size);
+
+	@include media-breakpoint-up($breakpoint) {
+		.maxwith#{$infix}-#{$size} {
+			max-width: $width;
+		}
+	}
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file original="" product-name="Jonnitto.TextWithPicture" source-language="en" datatype="plaintext">
+		<body>
+			<trans-unit id="properties.alignment" xml:space="preserve">
+				<source>Alignment of the image</source>
+			</trans-unit>
+			<trans-unit id="properties.alignment.selectBoxEditor.placeholder" xml:space="preserve">
+				<source>Default</source>
+			</trans-unit>
+			<trans-unit id="left" xml:space="preserve">
+				<source>Left</source>
+			</trans-unit>
+			<trans-unit id="center" xml:space="preserve">
+				<source>Center</source>
+			</trans-unit>
+			<trans-unit id="right" xml:space="preserve">
+				<source>Right</source>
+			</trans-unit>
+			<trans-unit id="floatLeft" xml:space="preserve">
+				<source>Left floating</source>
+			</trans-unit>
+			<trans-unit id="floatRight" xml:space="preserve">
+				<source>Right floating</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

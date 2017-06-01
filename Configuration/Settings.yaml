@@ -1,0 +1,60 @@
+Jonnitto:
+  TextWithPicture:
+    defaultAlignment: 'right'
+    container: false
+    class:
+      row: row
+      colText: 'col-12 col-sm-6'
+      colPicutre: 'col-12 col-sm-6'
+      hasFloat: clearfix
+      hasRow: false
+      alignment:
+        left: flex-sm-row-reverse
+        right: false
+        floatLeft: 'float-sm-left my-sm-2 mr-sm-3 maxwith-sm-50'
+        floatRight: 'float-sm-right my-sm-2 ml-sm-3 maxwith-sm-50'
+    allowCropping: false
+    allowUpScaling: false
+    width: false
+    height: false
+    maximumWidth: 1280
+    maximumHeight: 1280
+    maximumWidths:
+      lg: 570
+      md: 490
+      sm: 378
+      xs: 564
+      fallback: 570
+    maximumHeights:
+      lg: false
+      md: false
+      sm: false
+      xs: false
+      fallback: false
+    widths:
+      lg: false
+      md: false
+      sm: false
+      xs: false
+      fallback: false
+    heights:
+      lg: false
+      md: false
+      sm: false
+      xs: false
+      fallback: false
+    breakpoints:
+      lg: '(min-width: 992px)'
+      md: '(min-width: 768px)'
+      sm: '(min-width: 576px)'
+
+Neos:
+  Neos:
+    userInterface:
+      translation:
+        autoInclude:
+          Jonnitto.TextWithPicture:
+            - 'NodeTypes/*'
+    fusion:
+      autoInclude:
+        Jonnitto.TextWithPicture: true
