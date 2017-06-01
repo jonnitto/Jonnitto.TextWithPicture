@@ -21,7 +21,7 @@
     ],
     "require": {
         "neos/neos": "~3.0 || dev-master",
-        "jonnitto/picutre": "~1.0",
+        "jonnitto/picture": "~1.0",
         "jonnitto/text": "~0.1"
     },
     "autoload": {
