@@ -1,11 +1,11 @@
 prototype(Jonnitto.TextWithPicture:TextWithPicture) < prototype(Fusion:Tag) {
 	config = ${Configuration.setting('Jonnitto.TextWithPicture')}
-	alignment = ${q(node).property('alignment') ? q(node).property('alignment') : this.config.defaultAlignment}
+	align = ${q(node).property('alignment') ? q(node).property('alignment') : this.config.defaultAlignment}
 
 	@context {
 		config = ${this.config}
-		alignment = ${this.alignment}
-		hasRow = ${this.alignment == 'left' || this.alignment == 'right' ? true : false}
+		alignment = ${this.align}
+		hasRow = ${this.align == 'left' || this.align == 'right' ? true : false}
 	}
 
 	attributes {
@@ -47,15 +47,14 @@ prototype(Jonnitto.TextWithPicture:TextWithPicture) < prototype(Fusion:Tag) {
 
 			attributes.class {
 				container = false
-				col = ${hasRow ? config.class.colPicutre : false}
+				col = ${hasRow ? config.class.colPicture : false}
 				float = ${hasRow ? false : config.class.alignment[alignment]}
-				floatPicture = ${hasRow ? false : config.class.floatPicture}
 			}
 			@process.contentElementWrapping >
 		}
 	}
 
-	@ignoreProperties = ${['config', 'alignment']}
+	@ignoreProperties = ${['config', 'align']}
 
 	@process.contentElementWrapping {
 		expression = ContentElementWrapping

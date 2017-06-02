@@ -5,7 +5,7 @@ Jonnitto:
     class:
       row: row
       colText: 'col-12 col-sm-6'
-      colPicutre: 'col-12 col-sm-6'
+      colPicture: 'col-12 col-sm-6'
       hasFloat: clearfix
       hasRow: false
       alignment:
