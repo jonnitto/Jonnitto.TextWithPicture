@@ -1,3 +1,5 @@
+// Namespaces are defined in the Root.fusion file
+
 prototype(Jonnitto.TextWithPicture:TextWithPicture) < prototype(Fusion:Tag) {
 	config = ${Configuration.setting('Jonnitto.TextWithPicture')}
 	align = ${q(node).property('alignment') ? q(node).property('alignment') : this.config.defaultAlignment}
