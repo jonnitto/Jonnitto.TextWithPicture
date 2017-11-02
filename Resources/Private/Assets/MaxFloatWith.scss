@@ -1,0 +1,33 @@
+$textwithpicture: () !default;
+// prettier-ignore
+$textwithpicture: map-merge((
+  "breakpoint": 768px,
+  "max-width": 50%,
+  "margin-top": 0.5rem,
+  "margin-bottom": 0.5rem,
+  "margin-horizontal": 1rem
+), $textwithpicture);
+
+@function textwithpicture($key) {
+  @return map-get($textwithpicture, $key);
+}
+
+@media (min-width: textwithpicture("breakpoint")) {
+  .jonnitto-textwithpicture--floatleft,
+  .jonnitto-textwithpicture--floatright {
+    max-width: textwithpicture("max-width");
+    width: 100%;
+    margin-top: textwithpicture("margin-top");
+    margin-bottom: textwithpicture("margin-bottom");
+  }
+
+  .jonnitto-textwithpicture--floatleft {
+    float: left;
+    margin-right: textwithpicture("margin-horizontal");
+  }
+
+  .jonnitto-textwithpicture--floatright {
+    float: right;
+    margin-left: textwithpicture("margin-horizontal");
+  }
+}

@@ -3,14 +3,7 @@
     "type": "neos-plugin",
     "license": "MIT",
     "description": "Text with responsive picture for Neos CMS",
-    "keywords": [
-        "flow",
-        "neos",
-        "picture",
-        "photo",
-        "image",
-        "text"
-    ],
+    "keywords": ["flow", "neos", "picture", "photo", "image", "text"],
     "authors": [
         {
             "name": "Jon Uhlmann",
@@ -19,10 +12,13 @@
             "role": "Developer"
         }
     ],
+    "archive": {
+        "exclude": [".editorconfig", ".gitignore", ".github", ".gitattributes", "gulp.json", "package.json", "CODE_OF_CONDUCT.md"]
+    },
     "require": {
         "neos/neos": "~3.0 || dev-master",
-        "jonnitto/picture": "~1.0",
-        "jonnitto/text": "~0.1"
+        "jonnitto/picture": "^1.1",
+        "carbon/filecontent": "^1.0"
     },
     "autoload": {
         "psr-4": {

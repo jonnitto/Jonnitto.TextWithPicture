@@ -1,65 +1,65 @@
-// Namespaces are defined in the Root.fusion file
+prototype(Jonnitto.TextWithPicture:TextWithPicture) < prototype(Neos.Fusion:Tag) {
+    config = ${Configuration.setting('Jonnitto.TextWithPicture')}
+    align = ${q(node).property('alignment') ? q(node).property('alignment') : this.config.defaultAlignment}
 
-prototype(Jonnitto.TextWithPicture:TextWithPicture) < prototype(Fusion:Tag) {
-	config = ${Configuration.setting('Jonnitto.TextWithPicture')}
-	align = ${q(node).property('alignment') ? q(node).property('alignment') : this.config.defaultAlignment}
+    @context {
+        config = ${this.config}
+        alignment = ${this.align}
+        hasRow = ${this.align == 'left' || this.align == 'right' ? true : false}
+    }
 
-	@context {
-		config = ${this.config}
-		alignment = ${this.align}
-		hasRow = ${this.align == 'left' || this.align == 'right' ? true : false}
-	}
+    attributes.class = Neos.Fusion:RawArray {
+        nodeType = 'jonnitto-textwithpicture'
+        container = ${config.container}
+        alignment = ${'-' + String.toLowerCase(alignment)}
+        container = ${hasRow ? config.class.hasRow : config.class.hasFloat}
+    }
 
-	attributes {
-		class = Fusion:RawArray {
-			@process.nodeType >
-			nodeType = 'jonnitto-textwithpicture'
-			container = ${config.container}
-			alignment = ${'-' + String.toLowerCase(alignment)}
-			container = ${hasRow ? config.class.hasRow : config.class.hasFloat}
-		}
-	}
+    content = Neos.Fusion:Template {
+        templatePath = 'resource://Jonnitto.TextWithPicture/Private/Fusion/TextWithPicture/TextWithPicture.html'
+        @process.row = Neos.Fusion:Tag {
+            @if.isLeftOrRight = ${hasRow}
+            attributes.class = Neos.Fusion:RawArray {
+                row = ${config.class.row}
+                alignment = ${config.class.alignment[alignment]}
+            }
+            content = ${value}
+        }
 
-	content = Fusion:Template {
-		templatePath = 'resource://Jonnitto.TextWithPicture/Private/Fusion/TextWithPicture/TextWithPicture.html'
-		@process.row = Fusion:Tag {
-			@if.isLeftOrRight = ${hasRow}
-			attributes.class = Fusion:RawArray {
-				row = ${config.class.row}
-				alignment = ${config.class.alignment[alignment]}
-			}
-			content = ${value}
-		}
+        hasRow = ${hasRow}
 
-		hasRow = ${hasRow}
+        text = Neos.Fusion:Tag {
+            @context.property = ${'text'}
+            attributes.class = ${hasRow ? config.class.colText : false}
+            content = ${q(node).property(property)}
+            @process {
+                convertUris = ConvertUris
+                contentElementEditable = ContentElementEditable
+            }
+        }
 
-		text = Jonnitto.Text:Editable {
-			attributes.class = Fusion:RawArray {
-				col = ${hasRow ? config.class.colText : false}
-			}
-		}
-		image = Jonnitto.Picture:Picture {
-			breakpoints = ${Configuration.setting('Jonnitto.TextWithPicture.breakpoints')}
-			maximumWidths = ${Configuration.setting('Jonnitto.TextWithPicture.maximumWidths')}
-			maximumHeights = ${Configuration.setting('Jonnitto.TextWithPicture.maximumHeights')}
-			widths = ${Configuration.setting('Jonnitto.TextWithPicture.widths')}
-			heights = ${Configuration.setting('Jonnitto.TextWithPicture.heights')}
-			allowCropping = ${Configuration.setting('Jonnitto.TextWithPicture.allowCropping')}
-			allowUpScaling = ${Configuration.setting('Jonnitto.TextWithPicture.allowUpScaling')}
+        image = Jonnitto.Picture:Picture {
+            breakpoints = ${Configuration.setting('Jonnitto.TextWithPicture.breakpoints')}
+            maximumWidths = ${Configuration.setting('Jonnitto.TextWithPicture.maximumWidths')}
+            maximumHeights = ${Configuration.setting('Jonnitto.TextWithPicture.maximumHeights')}
+            widths = ${Configuration.setting('Jonnitto.TextWithPicture.widths')}
+            heights = ${Configuration.setting('Jonnitto.TextWithPicture.heights')}
+            allowCropping = ${Configuration.setting('Jonnitto.TextWithPicture.allowCropping')}
+            allowUpScaling = ${Configuration.setting('Jonnitto.TextWithPicture.allowUpScaling')}
 
-			attributes.class {
-				container = false
-				col = ${hasRow ? config.class.colPicture : false}
-				float = ${hasRow ? false : config.class.alignment[alignment]}
-			}
-			@process.contentElementWrapping >
-		}
-	}
+            attributes.class {
+                container = false
+                col = ${hasRow ? config.class.colPicture : false}
+                float = ${hasRow ? false : config.class.alignment[alignment]}
+            }
+            @process.contentElementWrapping >
+        }
+    }
 
-	@ignoreProperties = ${['config', 'align']}
+    @ignoreProperties = ${['config', 'align']}
 
-	@process.contentElementWrapping {
-		expression = ContentElementWrapping
-		@position = 'end 999999999'
-	}
+    @process.contentElementWrapping {
+        expression = ContentElementWrapping
+        @position = 'end 999999999'
+    }
 }

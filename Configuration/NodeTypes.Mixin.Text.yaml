@@ -1,0 +1,36 @@
+'Jonnitto.TextWithPicture:Text':
+  abstract: true
+  search:
+    fulltext:
+      enable: true
+  properties:
+    text:
+      type: string
+      search:
+        fulltextExtractor: '${Indexing.extractHtmlTags(value)}'
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: i18n
+          alignment: {  }
+          autoparagraph: true
+          format:
+            strong: true
+            em: true
+            sub: true
+            sup: true
+            p: true
+            h2: true
+            h3: true
+            h4: false
+            removeFormat: true
+          table:
+            table: true
+          list:
+            ol: true
+            ul: true
+          link:
+            a: true
+          formatlesspaste:
+            button: true
+            formatlessPasteOption: true

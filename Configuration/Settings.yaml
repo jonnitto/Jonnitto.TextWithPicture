@@ -1,18 +1,19 @@
 Jonnitto:
   TextWithPicture:
-    defaultAlignment: 'right'
+    includeMaxFloatWithCss: true
+    defaultAlignment: right
     container: false
     class:
       row: row
-      colText: 'col-12 col-sm-6'
-      colPicture: 'col-12 col-sm-6'
+      colText: col-md-6
+      colPicture: col-md-6
       hasFloat: clearfix
       hasRow: false
       alignment:
-        left: flex-sm-row-reverse
+        left: flex-md-row-reverse
         right: false
-        floatLeft: 'float-sm-left my-sm-2 mr-sm-3 maxwith-sm-50'
-        floatRight: 'float-sm-right my-sm-2 ml-sm-3 maxwith-sm-50'
+        floatLeft: 'jonnitto-textwithpicture--floatleft'
+        floatRight: 'jonnitto-textwithpicture--floatright'
     allowCropping: false
     allowUpScaling: false
     width: false
