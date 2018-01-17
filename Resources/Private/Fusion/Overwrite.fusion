@@ -1,9 +1,12 @@
 prototype(Page) {
     head.textWithPictureMaxFloatWith = Neos.Fusion:Tag {
-        @if.hasImageOrIsBackendAndActive = ${(q(node).children('[instanceof Neos.Neos:ContentCollection]').find('[instanceof Jonnitto.TextWithPicture:AlignmentFloatLeftMixin][alignment="floatLeft"],[instanceof Jonnitto.TextWithPicture:AlignmentFloatRightMixin][alignment="floatRight"]').is() || node.context.inBackend) && Configuration.setting('Jonnitto.TextWithPicture.includeMaxFloatWithCss')}
         tagName = 'style'
         content = Carbon.FileContent:FileContent {
             path = 'resource://Jonnitto.TextWithPicture/Private/Templates/InlineAssets/MaxFloatWith.css'
+        }
+        @if.render = Carbon.Condition:Case {
+            enabled = ${Configuration.setting('Jonnitto.TextWithPicture.includeMaxFloatWithCss')}
+            content.filter = '[instanceof Jonnitto.TextWithPicture:AlignmentFloatLeftMixin][alignment="floatLeft"],[instanceof Jonnitto.TextWithPicture:AlignmentFloatRightMixin][alignment="floatRight"]'
         }
     }
 }
