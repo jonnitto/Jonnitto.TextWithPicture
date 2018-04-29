@@ -1,11 +1,11 @@
 <f:comment>For float, the text need to be after the picutre</f:comment>
 <f:if condition="{hasRow}">
-	<f:then>
-		{text -> f:format.raw()}
-		{image -> f:format.raw()}
-	</f:then>
-	<f:else>
-		{image -> f:format.raw()}
-		{text -> f:format.raw()}
-	</f:else>
+    <f:then>
+        {text -> f:format.raw()}
+        {image -> f:format.raw()}
+    </f:then>
+    <f:else>
+        {image -> f:format.raw()}
+        {text -> f:format.raw()}
+    </f:else>
 </f:if>

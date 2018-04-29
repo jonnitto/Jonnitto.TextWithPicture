@@ -33,8 +33,8 @@ prototype(Jonnitto.TextWithPicture:TextWithPicture) < prototype(Neos.Fusion:Tag)
             attributes.class = ${hasRow ? config.class.colText : false}
             content = ${q(node).property(property)}
             @process {
-                convertUris = ConvertUris
-                contentElementEditable = ContentElementEditable
+                convertUris = Neos.Neos:ConvertUris
+                contentElementEditable = Neos.Neos:ContentElementEditable
             }
         }
 
@@ -59,7 +59,7 @@ prototype(Jonnitto.TextWithPicture:TextWithPicture) < prototype(Neos.Fusion:Tag)
     @ignoreProperties = ${['config', 'align']}
 
     @process.contentElementWrapping {
-        expression = ContentElementWrapping
+        expression = Neos.Neos:ContentElementWrapping
         @position = 'end 999999999'
     }
 }

@@ -1,4 +1,4 @@
-prototype(Page) {
+prototype(Neos.Neos:Page) {
     head.textWithPictureMaxFloatWith = Neos.Fusion:Tag {
         tagName = 'style'
         content = Carbon.FileContent:FileContent {
