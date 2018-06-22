@@ -1,9 +1,7 @@
 prototype(Neos.Neos:Page) {
     head.textWithPictureMaxFloatWith = Neos.Fusion:Tag {
         tagName = 'style'
-        content = Carbon.FileContent:FileContent {
-            path = 'resource://Jonnitto.TextWithPicture/Private/Templates/InlineAssets/MaxFloatWith.css'
-        }
+        content = ${Carbon.FileContent.path('Jonnitto.TextWithPicture/Private/Templates/InlineAssets/MaxFloatWith.css')}
         @if.render = Carbon.Condition:Case {
             enabled = ${Configuration.setting('Jonnitto.TextWithPicture.includeMaxFloatWithCss')}
             content.filter = '[instanceof Jonnitto.TextWithPicture:AlignmentFloatLeftMixin][alignment="floatLeft"],[instanceof Jonnitto.TextWithPicture:AlignmentFloatRightMixin][alignment="floatRight"]'

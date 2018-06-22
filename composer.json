@@ -19,7 +19,7 @@
         "neos/neos": "~3.0 || ~4.0",
         "jonnitto/picture": "^1.2",
         "carbon/condition": "^1.1",
-        "carbon/filecontent": "^1.1"
+        "carbon/eel": "^1.1"
     },
     "autoload": {
         "psr-4": {
