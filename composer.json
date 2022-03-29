@@ -18,7 +18,7 @@
     "require": {
         "neos/neos": "~3.0 || ~4.0",
         "jonnitto/picture": "^1.2 || ^2.0",
-        "carbon/condition": "^1.1",
+        "carbon/condition": "^1.1 || ^2.0",
         "carbon/eel": "^1.1"
     },
     "autoload": {
